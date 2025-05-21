@@ -403,8 +403,8 @@ public class GoFileConfigDataSource {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         magicalGoConfigXmlWriter.write(config, outputStream, skipPreprocessingAndValidation);
         LOGGER.debug("[Config Save] === Done converting config to XML");
-        // FIXME The below using default charset seems like a bug
-        return outputStream.toString(Charset.defaultCharset());
+        // The config xml is always written using UTF-8
+        return outputStream.toString(StandardCharsets.UTF_8);
     }
 
     public String getFileLocation() {
